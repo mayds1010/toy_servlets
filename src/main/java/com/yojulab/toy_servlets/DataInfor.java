@@ -39,7 +39,7 @@ public class DataInfor {
   
      public HashMap<String, ArrayList> getQuestion(){
         
-        HashMap<String, ArrayList> setQuestion = new HashMap<>();
+        HashMap<String, ArrayList> setquestion = new HashMap<>();
         ArrayList<String> answer1 = new ArrayList<>();
         ArrayList<String> answer2 = new ArrayList<>();
         ArrayList<String> answer3 = new ArrayList<>();
@@ -66,19 +66,16 @@ public class DataInfor {
         answer5.add("E4");
         answer5.add("E5");
 
-        setQuestion.put("Q1",answer3);
-        setQuestion.put("Q2",answer4);
-        setQuestion.put("Q3",answer3);
-        setQuestion.put("Q4",answer4);
-        setQuestion.put("Q5",answer5);
+        setquestion.put("Q1",answer3);
+        setquestion.put("Q2",answer4);
+        setquestion.put("Q3",answer3);
+        setquestion.put("Q4",answer4);
+        setquestion.put("Q5",answer5);
         
-        return setQuestion;
+        return setquestion;
     }
     
 }
 
 
-//hashmap은 키값의 중복이 불가...
-//HashMap <String, ArrayList> 으로 바꿔 
-//키값에 여러값을 묶어주자...
 
