@@ -1,9 +1,11 @@
-package com.yojulab.toy_servlets;
+package com.yojulab.toy_servlets.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.yojulab.toy_servlets.DataInfor;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
