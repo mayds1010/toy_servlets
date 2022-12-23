@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.HashMap, java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,9 @@
 
 <body>
 <% 
-    HashMap<String, Object> question = (HashMap<String, Object>)request.getAttribute("question");
+    HashMap<String, Object> question = (HashMap<String, Object>)request.getAttribute("question"); //한 문항
+    ArrayList<String> example = (ArrayList<String>)request.getAttribute("example"); //여러 문답
+    ArrayList<string> question_Uid = (ArrayList<Stirng>)request.getAttribute("question_Uid");
 %>
 
     <div> 
@@ -24,11 +27,16 @@
     </div>
     <div>
         <%= question.get("ORDERS") %>. <%= question.get("QUESTIONS")%>
+    
     </div>
-    <div>
-        (1) 전혀 아니다
-        (2) 아니다
-        (3) 보통이다
+    <div> <!--추가 -->
+        <%
+            for(int i=0; i<example.size();i++){ %>
+            <div>
+                <input type="radio" id="check" name="chk">
+               <%= ( i+1 ) example.get(i) %>
+            </div>
+           <% } %>
     </div>
 </body>
 
@@ -39,3 +47,6 @@
 <%= %> = jsp 표시
 <% %> = 나머지 
 --%>
+
+
+
