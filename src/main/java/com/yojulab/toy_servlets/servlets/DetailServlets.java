@@ -17,6 +17,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/polls/PollServlet")
 public class DetailServlets extends HttpServlet {
+    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // input type
@@ -24,30 +26,25 @@ public class DetailServlets extends HttpServlet {
 
         // biz with DB and Class
         PollWithDB pollWithDB = new PollWithDB();
-
-        HashMap<String, Object> question = null; //HashMap:한문항
-        ArrayList<HashMap> example_list = null; //ArrayList:여러문답
+        HashMap<String, Object> question = null;
+        ArrayList<HashMap> answers = null;
         ArrayList<String> questionUIDs = null;
+       
         try {
             question = pollWithDB.getQuestion(questions_Uid);
-            example_list = pollWithDB.getExamples(questions_Uid);
-            questionUIDs = pollWithDB.getQuestion_Uid();
-             // System.out.println(question.get("QUESTIONS_UID"));
-             // System.out.println(question.get("QUESTIONS"));
-             // System.out.println(question.get("ORDERS"));
-
+            answers = pollWithDB.getAnswer(questions_Uid);
+            questionUIDs =  pollWithDB.getQuestion_Uid();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // Output with html
-        request.setAttribute("questions", question);
-        request.setAttribute("example_list", example_list);
+        // output with html
+        request.setAttribute("question", question);
+        request.setAttribute("answers", answers);
         request.setAttribute("questionUIDs", questionUIDs);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/poll/details.jsp");
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/polls/details.jsp");
         requestDispatcher.forward(request, response);
     }
-
 }
     
 

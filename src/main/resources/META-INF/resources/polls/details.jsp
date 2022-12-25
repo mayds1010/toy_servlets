@@ -13,9 +13,8 @@
 
 <body>
 <% 
-    HashMap<String, Object> question = (HashMap<String, Object>)request.getAttribute("question"); //한 문항
-    ArrayList<String> example = (ArrayList<String>)request.getAttribute("example"); //여러 문답
-    ArrayList<string> question_Uid = (ArrayList<Stirng>)request.getAttribute("question_Uid");
+    HashMap<String, Object> question = (HashMap<String, Object>)request.getAttribute("question");
+    ArrayList<String> answers = (ArrayList<String>)request.getAttribute("answers");
 %>
 
     <div> 
@@ -27,20 +26,21 @@
     </div>
     <div>
         <%= question.get("ORDERS") %>. <%= question.get("QUESTIONS")%>
-    
     </div>
-    <div> <!--추가 -->
+    <div>
         <%
-            for(int i=0; i<example.size();i++){ %>
+            for(int i=0; i<answer.size();i++){ %>
             <div>
-                <input type="radio" id="check" name="chk">
-               <%= ( i+1 ) example.get(i) %>
+            <input type="radio" name="answers" id="ex">
+                (<%= i+1 %>) <%= answer.get(i) %>
             </div>
-           <% } %>
+           <% }
+        %>
     </div>
 </body>
 
 </html>
+
 
 <%-- 
 <%@ %> = 환경
